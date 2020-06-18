@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> userManager
+@{
+    var user = await userManager.GetUserAsync(User);
+    List<String> roles = (List<String>)ViewData["roles"];
+}
+<h1>
+    User information page
+</h1>
+<br />
+@if (user != null)
+{
+    <span>name: </span><span>@user.NormalizedUserName</span>
+    <br />
+    <span>email: </span><span>@user.NormalizedEmail</span>
+    <br />
+    <span>my password hash: </span><span>@user.PasswordHash</span>
+    <br />
+    <span>roles: 
+        @foreach (var r in roles)
+        {
+            <span> @r </span>
+        }
+    </span>
+}
+else
+{
+    <div>
+        authentication failed
+    </div>
+}

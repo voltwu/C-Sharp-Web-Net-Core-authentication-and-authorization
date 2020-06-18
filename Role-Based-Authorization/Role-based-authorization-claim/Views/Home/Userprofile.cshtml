@@ -1,0 +1,17 @@
+﻿<h1>
+    Hello, it's my profile page
+</h1>
+@{ 
+
+    List<String> roles = (List<String>)ViewData["roles"];
+}
+<br/>
+<div>
+    <div>name: @ViewData["name"]</div>
+    <div>passwordhash: @ViewData["passwordhash"]</div>
+    <div>roles:
+        @foreach (var r in roles) { 
+            <span> @r </span>
+        }
+    </div>
+</div>
