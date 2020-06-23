@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -67,7 +69,7 @@ namespace WebApplication2.Controllers
             }
             return RedirectToAction("Login");
         }
-
+        //[Authorize(AuthenticationSchemes= "Identity.Application")]
         [Authorize]
         public IActionResult Userinfo() {
             return View();
